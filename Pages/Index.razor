@@ -1,0 +1,28 @@
+﻿@page "/"
+@inject IJSRuntime JS
+
+<h1>Converter Imagem para PDF</h1>
+<h3>Utilizando a biblioteca <a href="https://rawgit.com/MrRio/jsPDF/master/">jsPDF</a></h3>
+
+<div id="Pdf">
+
+</div>
+
+@code {
+    public class Imagens
+    {
+        public string Imagem { get; set; }
+        public string Tipo { get; set; }
+    }
+
+    List<Imagens> listaImagens = new List<Imagens>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        string img = "";
+
+        await JS.InvokeAsync<string>("ConverterImagemToPdf", img);
+    }
+
+
+}
